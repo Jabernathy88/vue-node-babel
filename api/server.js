@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-// import models, { sequelize } from './models'
+import { sequelize } from './models'
 
 // initialize app & modules
 const app = express()
@@ -29,10 +29,12 @@ app.get('/', (req, res) => {
 // })
 
 // app listen
-const port = process.env.PORT || 3001
+const port = process.env.PORT || process.env.API_PORT
 
-// db.sequelize.sync().then(() => {
+sequelize.sync().then(() => {
+  console.log('Sequelize connected to PostgreSQL.')
+
   app.listen(port, () => {
     console.log(`Node API listening on PORT: ${port}.`)
   })
-// })
+})

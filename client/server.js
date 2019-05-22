@@ -5,7 +5,7 @@ const serveStatic = require('serve-static')
 const app = express()
 app.use(serveStatic(__dirname + "/dist"))
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || process.env.CLIENT_PORT
 
 app.listen(port)
 console.log(`Vue.js client started on PORT:: ${port}.`)
