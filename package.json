@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js --exec npx babel",
+    "dev": "nodemon server.js --exec npx babel-node",
     "heroku-postbuild": "npm install",
-    "start": "npx babel server.js"
+    "start": "npx babel-node server.js"
   },
   "repository": {
     "type": "git",
