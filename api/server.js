@@ -1,11 +1,11 @@
-import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-// import models, { sequelize } from './models';
+import 'dotenv/config'
+import express from 'express'
+import cors from 'cors'
+// import models, { sequelize } from './models'
 
 // initialize app & modules
-const app = express();
-app.use(cors());
+const app = express()
+app.use(cors())
 
 // register routes
 app.get('/', (req, res) => {
@@ -29,10 +29,10 @@ app.get('/', (req, res) => {
 // })
 
 // app listen
-const PORT = process.env.PORT || 3001
+const port = process.env.PORT || 3001
 
 // db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is listening on PORT ${PORT}`)
+  app.listen(port, () => {
+    console.log(`Node API listening on PORT: ${port}.`)
   })
 // })
