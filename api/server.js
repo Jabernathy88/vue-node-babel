@@ -1,9 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
+import cors from 'cors';
 // import models, { sequelize } from './models';
 
 // initialize app & modules
 const app = express();
+app.use(cors());
 
 // register routes
 app.get('/', (req, res) => {
