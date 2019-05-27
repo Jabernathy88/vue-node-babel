@@ -25,16 +25,15 @@ if (process.env.DATABASE_URL) {
   )
 }
 
-// const models = {
-//   User: sequelize.import('./user'),
-//   Message: sequelize.import('./message'),
-// }
+const models = {
+  Todo: sequelize.import('./todo')
+}
 
-// Object.keys(models).forEach(key => {
-//   if ('associate' in models[key]) {
-//     models[key].associate(models)
-//   }
-// })
+Object.keys(models).forEach(key => {
+  if ('associate' in models[key]) {
+    models[key].associate(models)
+  }
+})
 
-export { sequelize };
-// export default models
+export { sequelize }
+export default models
