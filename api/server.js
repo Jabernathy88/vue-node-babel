@@ -8,9 +8,12 @@ import seeds from './models/seeds'
 const app = express()
 app.use(cors())
 
-// register routes
+// serve Vue.js build directory at root URL
+const serveStatic = require("serve-static")
+const path = require('path');
+app.use(serveStatic(path.join(__dirname, '../client/dist')))
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendFile(__dirname + '../client/dist/index.html')
 })
 
 // localhost or Heroku
@@ -33,7 +36,8 @@ sequelize.sync({force: resetData}).then(async () => {
   })
 })
 
-app.get('/todos', async (req, res) => {
+// serve API end points at root/api/
+app.get('/api/todos', async (req, res) => {
   try {
     const todos = await models.Todo.findAll()
     console.log("I am Todos:", todos)
