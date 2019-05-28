@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npx babel-node api/server.js\" \"npx babel-node client/server.js\" ",
+    "dev": "concurrently \"npx babel-node api/server.js\" \"cd client && npm run serve\" ",
     "heroku-postbuild": "npm install && cd client && npm install && npm run build",
     "start": "npx babel-node api/server.js"
   },

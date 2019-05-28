@@ -12,9 +12,11 @@ app.use(cors())
 const serveStatic = require("serve-static")
 const path = require('path');
 app.use(serveStatic(path.join(__dirname, '../client/dist')))
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '../client/dist/index.html')
-})
+
+// comment out for script `npm run dev`
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '../client/dist/index.html')
+// })
 
 // localhost or Heroku
 const port = process.env.PORT || process.env.API_PORT
