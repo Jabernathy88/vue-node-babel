@@ -9,14 +9,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon api/server.js --exec npx babel-node",
-    "heroku-postbuild": "npm install",
+    "dev": "concurrently \"npx babel-node api/server.js\" \"cd client && npm run serve\" ",
+    "heroku-postbuild": "npm install && cd client && npm install && npm run build",
     "start": "npx babel-node api/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jabernathy88/vue-node-babel.git"
-  },
+  "repository": "github:Jabernathy88/vue-node-babel.git",
   "keywords": [],
   "author": "Jeremy Abernathay <j.e.abernathy@gmail.com> (ghostmapmedia.com)",
   "license": "MIT",

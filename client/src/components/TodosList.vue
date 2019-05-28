@@ -1,0 +1,25 @@
+<template>
+  <div>
+    <h2>Current Todo List</h2>
+    <div v-bind:key="todo.id" v-for="todo in todos">
+      <!-- <TodoItem v-bind:todo="todo" v-on:del-todo="$emit('del-todo', todo.id)"/> -->
+      <TodoItem v-bind:todo="todo" />
+
+    </div>
+  </div>
+</template>
+
+<script>
+  import TodoItem from './TodoItem.vue'
+
+  export default {
+    name: "TodosList",
+    components: {
+      TodoItem
+    },
+    props: ["todos"]
+  }
+</script>
+
+<style scoped>
+</style>

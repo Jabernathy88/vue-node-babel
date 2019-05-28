@@ -2,6 +2,8 @@
 
 Set up based on [article by Jay Gould](https://www.jaygould.co.uk/devops/2017/11/14/cloud-deployment-heroku-node-babel.html).
 
+### PART 1 - Node API
+
 Note: Some new conventions introduced in 2018-2019.
 
 * Add to package.json:
@@ -30,3 +32,33 @@ Note: Some new conventions introduced in 2018-2019.
 ```
 heroku config:set NPM_CONFIG_PRODUCTION=false
 ```
+
+### PART 2 - Vue.js client
+
+In root folder:
+```
+npm i concurrently
+```
+
+In client folder:
+```
+"proxy": "http://localhost:3001",
+```
+
+api/server.js
+```
+app.use(express.static(__dirname + '/client/build/'))
+
+app.get('/', (req,res) => {
+  res.sendFile(__dirname + '/client/build/index.html')
+})
+```
+
+react version
+  "postinstall": "cd client && npm install && npm run build"
+vue version
+  "postinstall": "npm run build"
+
+local version
+    "dev": "concurrently \"nodemon server.js\" \"cd ./client  && npm start \" ",
+
