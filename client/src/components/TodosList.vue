@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2>Current Todo List</h2>
+    <h4 class="text-black-50">Current Todo List</h4>
     <div v-bind:key="todo.id" v-for="todo in todos">
       <!-- <TodoItem v-bind:todo="todo" v-on:del-todo="$emit('del-todo', todo.id)"/> -->
-      <TodoItem v-bind:todo="todo" />
+    <TodoItem v-bind:todo="todo" />
 
     </div>
   </div>
