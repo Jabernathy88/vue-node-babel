@@ -1,13 +1,12 @@
 import models from '../models'
 const Todo = models.Todo
 
-// correct syntax below
 const todosController = {
   index: async (req, res) => {
     try {
       const todos = await Todo.findAll()
       res.json(todos)
-    } 
+    }
     catch (error) {
       console.log(error)
       res.sendStatus(500)
@@ -18,7 +17,7 @@ const todosController = {
       const todo = await Todo.findByPk(req.params.todoId)
       console.log("I AM SHOW METHOD")
       res.json(todo)
-    } 
+    }
     catch (error) {
       console.log(error)
       res.sendStatus(500)
@@ -34,10 +33,8 @@ const todosController = {
       console.log(error)
       res.sendStatus(500)
     }
-    
   },
-  update: 
-  async (req, res) => {
+  update: async (req, res) => {
     try {
       const todo = await Todo.findByPk(req.params.todoId)
       const updatedTodo = await todo.update(req.body)
@@ -61,12 +58,6 @@ const todosController = {
       res.sendStatus(500)
     }
   }
-  // (req, res) => {
-  //   Todo.findByIdAndUpdate(req.params.userId)
-  //     .then(() => {
-  //       res.send(200) // status: ok
-  //     })
-  // }
 }
 
 export default todosController

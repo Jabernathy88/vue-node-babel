@@ -26,7 +26,7 @@ app.use('/', routes)
 const port = process.env.PORT || process.env.API_PORT
 
 // to drop and seed DB, change to true:
-const resetData = true
+const resetData = false
 
 // connect DB and seed if flag is true
 sequelize.sync({force: resetData}).then(async () => {
