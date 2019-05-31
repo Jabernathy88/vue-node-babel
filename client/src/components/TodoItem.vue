@@ -5,10 +5,10 @@
         <input type="checkbox" aria-label="Checkbox for following text input">
       </b-input-group-prepend>
         <b-form-input class="w-25 border-right-0" v-bind:placeholder="todo.title"></b-form-input>
-        <b-input-group-addon is-text class="border-left-0 d-none d-md-flex">
+        <!-- <b-input-group-addon is-text class="border-left-0 d-none d-md-flex">
           <i class="fas fa-calendar-day"></i>
         </b-input-group-addon>
-        <b-form-input v-bind:id="'todo.id'" type="date" class="bg-light text-black-50"></b-form-input>
+        <b-form-input v-bind:id="'todo.id'" type="date" class="bg-light text-black-50"></b-form-input> -->
       <b-input-group-append class="">
         <b-button variant="outline-danger"><i class="fas fa-times"></i></b-button>
       </b-input-group-append>

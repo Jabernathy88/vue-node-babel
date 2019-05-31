@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import models, { sequelize } from './models'
 import seeds from './models/seeds'
+import routes from './routes'
 
 // initialize app & modules
 const app = express()
@@ -14,15 +15,18 @@ const path = require('path');
 app.use(serveStatic(path.join(__dirname, '../client/dist')))
 
 // comment out for script `npm run dev`
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '../client/dist/index.html')
-// })
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '../client/dist/index.html')
+})
+
+// register router
+app.use('/', routes)
 
 // localhost or Heroku
 const port = process.env.PORT || process.env.API_PORT
 
 // to drop and seed DB, change to true:
-const resetData = false
+const resetData = true
 
 // connect DB and seed if flag is true
 sequelize.sync({force: resetData}).then(async () => {
@@ -36,16 +40,4 @@ sequelize.sync({force: resetData}).then(async () => {
   app.listen(port, () => {
     console.log(`Node API listening on PORT: ${port}.`)
   })
-})
-
-// serve API end points at root/api/
-app.get('/api/todos', async (req, res) => {
-  try {
-    const todos = await models.Todo.findAll()
-    console.log("I am Todos:", todos)
-    res.json(todos)
-  } catch (error) {
-    console.log(error)
-    res.sendStatus(500)
-  }
 })
