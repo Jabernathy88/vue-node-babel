@@ -10,11 +10,8 @@
 
   <!-- <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" /> -->
     <AddTodoForm v-on:add-todo="createNewTodo" />
-    <TodosList v-bind:todos="todos" />
-
-
+    <TodosList v-bind:todos="todos" v-on:del-todo="deleteTodo" />
   </b-container>
-
 </template>
 
 <script>
@@ -34,11 +31,11 @@ export default {
     }
   },
   methods: {
-    // deleteTodo(id) {
-    //   axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-    //     .then(res => this.todos = this.todos.filter(todo => todo.id !== id))
-    //     .catch(err => console.log(err));
-    // },
+    deleteTodo(id) {
+      axios.delete(`http://localhost:3001/api/todos/${id}`)
+        .then(res => this.todos = this.todos.filter(todo => todo.id !== id))
+        .catch(err => console.log(err));
+    },
     createNewTodo(newTodo) {
       const {title, completed} = newTodo
       axios.post('http://localhost:3001/api/todos', {
