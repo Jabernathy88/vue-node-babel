@@ -1,7 +1,7 @@
 <template>
-  <b-form-row @submit="createNewTodo" >
+  <b-form @submit="addTodo" >
     <b-form-group class="w-100" description="Create a new task and schedule when it's due.">
-      <b-input-group prepend="Title">
+      <b-input-group prepend="Title"> 
         <b-form-input type="text" v-model="title" name="title" placeholder=" Name your next task!" />
       </b-input-group>
       <b-form-row class="mt-1">
@@ -11,7 +11,7 @@
           </b-input-group>
         </b-col > -->
         <b-col cols="3" sm="3" md="2">
-          <b-button block class="" type="submit" variant="outline-success" >
+          <b-button block class="btn" type="submit" value="submit" variant="outline-success" >
             Submit
           </b-button>
         </b-col>
@@ -19,7 +19,7 @@
       <!-- custom datepicker
       <datepicker></datepicker> -->
     </b-form-group>
-  </b-form-row>  
+  </b-form>  
 </template>
 
 <script>
@@ -36,7 +36,7 @@
       Datepicker
     },
     methods: {
-      createNewTodo(e) {
+      addTodo(e) {
         e.preventDefault();
         const newTodo = {
           title: this.title,

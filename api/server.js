@@ -1,13 +1,15 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import models, { sequelize } from './models'
+import { sequelize } from './models'
+import bodyParser from 'body-parser'
 import seeds from './models/seeds'
 import routes from './routes'
 
 // initialize app & modules
 const app = express()
 app.use(cors())
+app.use(bodyParser.json())
 
 // serve Vue.js build directory at root URL
 const serveStatic = require("serve-static")
@@ -15,9 +17,9 @@ const path = require('path');
 app.use(serveStatic(path.join(__dirname, '../client/dist')))
 
 // comment out for localhost script: `npm run dev`
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '../client/dist/index.html')
-})
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '../client/dist/index.html')
+// })
 
 // register router
 app.use('/', routes)
@@ -26,7 +28,7 @@ app.use('/', routes)
 const port = process.env.PORT || process.env.API_PORT
 
 // to drop and seed DB, change to true:
-const resetData = false
+const resetData = true
 
 // connect DB and seed if flag is true
 sequelize.sync({force: resetData}).then(async () => {

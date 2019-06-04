@@ -5,8 +5,14 @@ const todo = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4
     },
-    title: DataTypes.STRING,
-    due_date: DataTypes.DATE,
+    title: {
+      type: DataTypes.STRING,
+      defaultValue: 'Name for this Todo is TBA.'
+    },
+    due_date: {
+      type: DataTypes.DATE,
+      defaultValue: new Date('2019-12-01')
+    },
     completed: {
       type: DataTypes.BOOLEAN,
       defaultValue: false

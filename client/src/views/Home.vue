@@ -9,9 +9,9 @@
   <!-- <img class="vue-logo" alt="Vue logo" src="../assets/logo.png"> -->
 
   <!-- <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" /> -->
-    <AddTodoForm v-on:add-todo="createNewTodo" />
+    <AddTodoForm v-on:add-todo="addTodo" />
     <TodosList v-bind:todos="todos" v-on:del-todo="deleteTodo" />
-  </b-container>
+  </b-container> 
 </template>
 
 <script>
@@ -36,11 +36,11 @@ export default {
         .then(res => this.todos = this.todos.filter(todo => todo.id !== id))
         .catch(err => console.log(err));
     },
-    createNewTodo(newTodo) {
-      const {title, completed} = newTodo
+    addTodo(newTodo) {
+      // const {title, completed} = newTodo
       axios.post('http://localhost:3001/api/todos', {
-        title,
-        completed
+        title: newTodo.title,
+        completed: false
       })
         .then(res => this.todos = [...this.todos, res.data])
         .catch(err => console.log(err))

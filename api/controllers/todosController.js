@@ -5,6 +5,8 @@ const todosController = {
   index: async (req, res) => {
     try {
       const todos = await Todo.findAll()
+      console.log("I AM INDEX METHOD")
+      // console.log(todos)
       res.json(todos)
     }
     catch (error) {
@@ -23,16 +25,13 @@ const todosController = {
       res.sendStatus(500)
     }
   },
-  create: async (req, res) => {
-    try {
-      const todo = await Todo.create(req.body)
-      console.log("I AM CREATE METHOD")
-      res.json(todo)
-    }
-    catch {
-      console.log(error)
-      res.sendStatus(500)
-    }
+  create: (req, res) => {
+    console.log("I AM CREATE METHOD")
+    console.log("I am req.body:", req.body)
+    // Todo.create(req.body)
+      // .then((todo) => {
+      //   res.send(todo)
+      // })
   },
   update: async (req, res) => {
     try {

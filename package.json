@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npx babel-node api/server.js\" \"cd client && npm run serve\" ",
+    "dev": "concurrently \"nodemon api/server.js --exec npx babel-node\" \"cd client && npm run serve\" ",
     "heroku-postbuild": "npm install && cd client && npm install && npm run build",
     "start": "npx babel-node api/server.js"
   },
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Jabernathy88/vue-node-babel#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
