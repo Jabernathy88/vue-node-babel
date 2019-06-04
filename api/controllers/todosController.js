@@ -28,10 +28,10 @@ const todosController = {
   create: (req, res) => {
     console.log("I AM CREATE METHOD")
     console.log("I am req.body:", req.body)
-    // Todo.create(req.body)
-      // .then((todo) => {
-      //   res.send(todo)
-      // })
+    Todo.create(req.body)
+      .then((todo) => {
+        res.send(todo)
+      })
   },
   update: async (req, res) => {
     try {
@@ -48,8 +48,9 @@ const todosController = {
   delete: async (req, res) => {
     try {
       const todo = await Todo.findByPk(req.params.todoId)
-      await todo.delete()
       console.log("I AM DELETE METHOD")
+      console.log("I am selected todo:", todo)
+      await todo.destroy()
       res.sendStatus(200)
     } 
     catch (error) {
