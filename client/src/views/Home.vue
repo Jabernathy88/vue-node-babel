@@ -10,7 +10,7 @@
 
   <!-- <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" /> -->
     <AddTodoForm v-on:add-todo="addTodo" />
-    <TodosList v-bind:todos="todos" v-on:del-todo="deleteTodo" />
+    <TodosList v-bind:todos="todos" v-on:del-todo="deleteTodo" v-on:update-todo="updateTodo" />
   </b-container> 
 </template>
 

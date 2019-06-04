@@ -35,9 +35,10 @@ const todosController = {
   },
   update: async (req, res) => {
     try {
+      // console.log("I AM UPDATE METHOD")
+      // console.log("I req params:", req.params.todoId)
       const todo = await Todo.findByPk(req.params.todoId)
       const updatedTodo = await todo.update(req.body)
-      console.log("I AM UPDATE METHOD")
       res.json(updatedTodo)
     } 
     catch (error) {
