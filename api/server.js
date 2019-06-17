@@ -17,9 +17,9 @@ const path = require('path');
 app.use(serveStatic(path.join(__dirname, '../client/dist')))
 
 // comment out for localhost script: `npm run dev`
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '../client/dist/index.html')
-// })
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '../client/dist/index.html')
+})
 
 // register router
 app.use('/', routes)
